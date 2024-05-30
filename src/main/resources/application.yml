@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/millionaires_db
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: qwerty123
+  jpa:
+    show-sql: true

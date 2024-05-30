@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<H1>Usunięto pytanie:</H1>
+<ul>
+    <li th:each="questions: ${list}" th:text="${questions.questionId + ' ' +questions.questionBody}"></li>
+</ul>
+<a href="admin.html">Powrót do zadań Admina</a>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Twój wynik</title>
+</head>
+<body>
+<h2 th:text ="'Twoja odpowiedź jest: ' + ${result}"></h2>
+<h2> Dziękujemy za grę</h2>
+<br>
+<h2 th:if="${prize == 1}">Twoja wygrana to 500 zł</h2>
+<h2 th:if="${prize == 2}">Twoja wygrana to 1 000 zł</h2>
+<h2 th:if="${prize == 3}">Twoja wygrana to 2 000 zł</h2>
+<h2 th:if="${prize == 4}">Twoja wygrana to 5 000 zł</h2>
+<h2 th:if="${prize == 5}">Twoja wygrana to 10 000 zł</h2>
+<h2 th:if="${prize == 6}">Twoja wygrana to 20 000 zł</h2>
+<h2 th:if="${prize == 7}">Twoja wygrana to 40 000 zł</h2>
+<h2 th:if="${prize == 8}">Twoja wygrana to 75 000 zł</h2>
+<h2 th:if="${prize == 9}">Twoja wygrana to 125 000 zł</h2>
+<h2 th:if="${prize == 10}">Twoja wygrana to250 000 zł</h2>
+<h2 th:if="${prize == 11}">Twoja wygrana to 500 000 zł</h2>
+<a href="index.html">Spróbuj jeszcze raz...</a>
+</form>
+</body>
+</html>

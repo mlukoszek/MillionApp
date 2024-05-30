@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body align="center">
+<H1>Witamy w Panelu Admina</H1>
+<h2>Wybierz co chcesz robić:</h2>
+<h3>Dodawanie pytań do bazy danych:</h3>
+<form action="/addQuestion">
+    <fieldset>
+        <div>
+            <p><label for="questionBody">Podaj treść pytania:</label></p>
+            <textarea id="questionBody" cols="50" rows="10" name="questionBody"></textarea>
+        </div>
+        <br>
+        <div>
+            <label for="answerA">Odpowiedź A</label>
+            <input type="text" id="answerA" name="answerA">
+        </div>
+        <div>
+            <label for="answerB">Odpowiedź B</label>
+            <input type="text" id="answerB" name="answerB">
+        </div>
+        <div>
+            <label for="answerC">Odpowiedź C</label>
+            <input type="text" id="answerC" name="answerC">
+        </div>
+        <div>
+            <label for="answerD">Odpowiedź D</label>
+            <input type="text" id="answerD" name="answerD">
+        </div>
+        <br>
+        <div>
+            <label for="rightAnswer">Poprawna odpowiedź</label>
+            <select name="rightAnswer" id="rightAnswer">
+                <option>A</option>
+                <option>B</option>
+                <option>C</option>
+                <option>D</option>
+            </select>
+        </div>
+        <div>
+            <label for="difficulty">Trudność pytania</label>
+            <select name="difficulty" id="difficulty">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+                <option>11</option>
+                <option>12</option>
+            </select>
+        </div>
+        <button type="submit">Zapisz pytanie</button>
+    </fieldset>
+
+</form>
+<h3>Przeglądanie pytań:</h3>
+<form action="/getAllQuestions">
+    <button type="submit">Pokaż wszystkie pytania</button>
+</form>
+<br>
+<form action="/getQuestionsByDifficulty">
+    <label for="getQuestionType">Podaj trudność pytań, jakie chcesz wyszukać</label>
+    <input type="text" id="getQuestionType" name="difficulty">
+    <button type="submit">Wyślij</button>
+</form>
+<br>
+<fieldset>
+    <h3>Usuwanie pytań:</h3>
+    <form action="/delete">
+        <label for="delete">Podaj id pytania do usunięcia</label>
+        <input type="text" id="delete" name="questionId">
+        <button type="submit">Wyślij</button>
+    </form>
+</fieldset>
+<a href="index.html">Powrót do strony głównej</a>
+</body>
+</html>
