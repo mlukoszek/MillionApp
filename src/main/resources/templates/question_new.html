@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milionerzy</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .question-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .answer-text {
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Belka nawigacyjna -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Milionerzy</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Gra</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Wyniki</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Panel Admina</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Pole na zadanie pytania i formularz odpowiedzi -->
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title question-text">Pytanie:</h5>
+                        <p class="card-text question-text">Jaka jest stolica Francji?</p>
+                        
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="answer" id="answer1" value="A">
+                                        <label class="form-check-label answer-text" for="answer1">A. Paryż</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="answer" id="answer2" value="B">
+                                        <label class="form-check-label answer-text" for="answer2">B. Londyn</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="answer" id="answer3" value="C">
+                                        <label class="form-check-label answer-text" for="answer3">C. Madryt</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="answer" id="answer4" value="D">
+                                        <label class="form-check-label answer-text" for="answer4">D. Rzym</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Belka z kołami ratunkowymi -->
+        <div class="row mt-4">
+            <div class="col-12 text-center">
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-primary">Telefon do przyjaciela</button>
+                    <button type="button" class="btn btn-primary">Pytanie do publiczności</button>
+                    <button type="button" class="btn btn-primary">50:50</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Zdjęcie Urbańskiego -->
+        <div class="row mt-4">
+            <div class="col-12 text-center">
+                <img src="https://via.placeholder.com/300x200" alt="Urbański" class="img-fluid">
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

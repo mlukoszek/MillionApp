@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milionerzy - Ranking</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/styles/main.css" />
+</head>
+<body>
+
+<!-- Belka nawigacyjna -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="width: 75%; margin: 0 auto;">
+    <a class="navbar-brand" href="#">
+        <img src="img/logo.jpg" alt="Milionerzy" class="navbar-logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav" style="margin-left: 140px;">
+            <li class="nav-item mr-3">
+                <form action="drawQuestion" method="get" class="nav-link p-0 m-0">
+                    <button type="submit" id="difficulty" name="start" value="0" class="btn nav-btn">Nowa gra</button>
+                </form>
+            </li>
+            <li class="nav-item mr-3">
+                <a class="nav-link btn nav-btn" href="#">Ranking</a>
+            </li>
+            <li class="nav-item mr-3">
+                <a class="nav-link btn nav-btn" href="#">Moje wyniki</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link btn nav-btn" href="#">Moje konto</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link btn nav-btn" href="#">Wyloguj</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Ranking graczy -->
+<div class="container mt-4">
+    <h2 class="text-center text-white">Ranking</h2>
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-bordered table-hover table-striped">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Pozycja</th>
+                    <th scope="col">Gracz</th>
+                    <th scope="col">Wygrana</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Jan Kowalski</td>
+                    <td>1 000 000 zł</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Anna Nowak</td>
+                    <td>500 000 zł</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Zenon Wiaderny</td>
+                    <td>250 000 zł</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Piotr Karaczkiewicz</td>
+                    <td>40 000 zł</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Magdalena Wiśniewska</td>
+                    <td>25 000 zł</td>
+                </tr>
+                <!-- Możesz dodać więcej graczy tutaj -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

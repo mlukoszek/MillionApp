@@ -33,6 +33,11 @@ public class QuestionsService {
     public Boolean evaluate(String userAnswer, String rightAnswer) {
         return userAnswer.equals(rightAnswer);
     }
+
+    public QuestionDto findQuestionById(int questionId) {
+        Question question = questionsRepository.getQuestionByQuestionId(questionId);
+        return questionsDtoMapper.map(question);
+    }
 }
 
 
