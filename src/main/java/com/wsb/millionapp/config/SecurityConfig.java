@@ -65,8 +65,8 @@ public class SecurityConfig {
                 )
                 .authorizeHttpRequests(authorizeRequests ->
                 authorizeRequests
-                        .requestMatchers("/api/login", "/api/audienceVote", "/api/fiftyFifty", "/img/**", "/styles/*", "/api/response", "/addQuestion", "/getAllQuestions", "/deleteQuestion").permitAll()
-                        .requestMatchers("/api/drawQuestion").hasRole("USER")
+                        .requestMatchers("/api/login", "/api/drawQuestion", "/api/audienceVote", "/api/fiftyFifty", "/img/**", "/styles/*", "/api/response", "/addQuestion", "/getAllQuestions", "/deleteQuestion").permitAll()
+                        //.requestMatchers("/api/drawQuestion").hasRole("USER")
                         //.requestMatchers("/admin").hasRole("ADMIN")
                         .anyRequest().authenticated()
         );

@@ -11,6 +11,7 @@ public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long questionId;
+    @Column(name = "question_body")
     String questionBody;
     @Column(name = "answer_a")
     String answerA;
@@ -20,7 +21,9 @@ public class Question {
     String answerC;
     @Column(name = "answer_d")
     String answerD;
+    @Column(name = "right_answer")
     String rightAnswer;
+    @Column(name = "difficulty")
     int difficulty;
 
     public Question(String questionBody, String answerA, String answerB, String answerC,
