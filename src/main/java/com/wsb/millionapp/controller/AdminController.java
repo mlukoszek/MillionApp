@@ -12,12 +12,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @Controller
+@RequestMapping("/admin")
 public class AdminController {
     private final UsersRepository usersRepository;
     private final UsersService usersService;
@@ -55,20 +55,21 @@ public class AdminController {
     public Map<Long, String> getAllQuestions() {
         List<Question> questionsList = adminService.getQuestionsList();
         Map<Long, String> response = new HashMap<>();
-
         for (Question question : questionsList) {
             response.put(question.getQuestionId(), question.getQuestionBody());
         }
-        SecurityContext context = SecurityContextHolder.getContext();
-        System.out.println("Logged-in user: " + context.getAuthentication().getName());
         return response;
     }
 
-    @PostMapping("/getQuestionsByDifficulty")
-    String getQuestionsListByDifficulty(@RequestBody int difficulty, Model model) {
+    @GetMapping("/getQuestionsByDifficulty")
+    @ResponseBody
+    public Map<Long, String> getQuestionsListByDifficulty(@RequestParam int difficulty) {
         List<Question> questionsList = adminService.getQuestionsListByDifficulty(difficulty);
-        model.addAttribute("list", questionsList);
-        return "questionsList";
+        Map<Long, String> response = new HashMap<>();
+        for (Question question : questionsList) {
+            response.put(question.getQuestionId(), question.getQuestionBody());
+        }
+        return response;
     }
 
     @DeleteMapping("/deleteQuestion")
@@ -78,11 +79,12 @@ public class AdminController {
         String responseMessage = String.format("Usunięto pytanie id nr %d", questionId);
         return ResponseEntity.ok(responseMessage);
     }
-//    @PostMapping("/setActive")
-//    ResponseEntity<String> setUserAsActive(@RequestBody Long userId) {
-//        String userActivated = usersService.activateUser(userId);
-//
-//        return ResponseEntity.ok(userActivated);
-//    }
+
+    @PutMapping("/activateUser")
+    ResponseEntity<String> setUserAsActive(@RequestBody Map<String, Long> body) {
+        Long userId = body.get("userId");
+        String userActivated = usersService.activateUser(userId);
+        return ResponseEntity.ok(userActivated);
+    }
 
 }

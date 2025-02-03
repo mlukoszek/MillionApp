@@ -51,12 +51,13 @@ public class UsersService {
         return Optional.of(UsersDtoMapper.map(user));
     }
 
-//    public String activateUser(Long userId){
-//        User user = usersRepository.findUserById(userId);
-//        if(user == null){
-//            return "Nie znaleziono użytkownika o podanym ID";
-//        }
-//        user.setActive(true);
-//        return usersRepository.updateUsersByUsername(user.getUsername(),user);
-//    }
+    public String activateUser(Long userId) {
+        User user = usersRepository.findUserById(userId);
+        if (user != null) {
+            user.setActive(true);
+            usersRepository.save(user);
+            return "User activated: " + user.getUsername();
+        }
+        return "Aktywacja nieudana";
+    }
 }
