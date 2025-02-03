@@ -30,15 +30,17 @@ class QuestionsController {
     private ScoreService scoreService;
 
     @PostMapping("/drawQuestion")
-//    @CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
+    @CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "*", allowCredentials = "true")
     public ResponseEntity<QuestionDto> getQuestion(@RequestParam int difficulty) {
         int adjustedDifficulty = difficulty + 1;
         QuestionDto questionDto = questionsService.drawQuestion(adjustedDifficulty);
+        String string = SecurityContextHolder.getContext().getAuthentication().getName();
+        System.out.println("aktualny kontekst: " + string);
         return ResponseEntity.ok(questionDto);
     }
 
     @PostMapping("/response")
-//    @CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
+    @CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
     public ResponseEntity<?> checkAnswer(@RequestBody AnswerRequest answerRequest) {
         String userAnswer = answerRequest.getUserAnswer();
         String goodAnswer = answerRequest.getCorrectAnswer();
@@ -49,13 +51,13 @@ class QuestionsController {
         if (result) {
             responseMessage = "Odpowiedź jest poprawna";
             if (answerRequest.getDifficulty()==12) {
-//                saveGameResult(12);
+                saveGameResult(12);
                 return ResponseEntity.status(HttpStatus.OK).body(new EvaluationResponse(responseMessage, 12));
             }
         } else {
             responseMessage = "Odpowiedź jest błędna";
             int yourPrize = answerRequest.getDifficulty() - 1;
-//            saveGameResult(yourPrize);
+            saveGameResult(yourPrize);
             return ResponseEntity.status(HttpStatus.OK).body(new EvaluationResponse(responseMessage, yourPrize));
         }
 

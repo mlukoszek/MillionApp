@@ -1,6 +1,6 @@
 package com.wsb.millionapp.controller;
 
-import com.wsb.millionapp.config.JwtTokenProvider;
+//import com.wsb.millionapp.config.JwtTokenProvider;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.Getter;
@@ -28,8 +28,8 @@ public class AuthController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
-    @Autowired
-    private JwtTokenProvider tokenProvider;
+//    @Autowired
+//    private JwtTokenProvider tokenProvider;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -54,7 +54,11 @@ public class AuthController {
             responseBody.put("message", "Login successful");
             responseBody.put("sessionId", sessionId);
             HttpSession session = request.getSession(false);
-            System.out.println("servlet context:" + session.getId());
+            System.out.println("Sesja PRZED logowaniem:" + session.getId());
+
+            session.setAttribute("SPRING_SECURITY_CONTEXT", SecurityContextHolder.getContext()); // Wymuszenie zapisania sesji
+
+            System.out.println("Sesja PO logowaniu: " +session.getId());
             session.setAttribute("sessionId", session.getId());
             System.out.println("atrybut sessionId:" + session.getAttribute(sessionId));
             System.out.println("id sesji:" + session.getAttributeNames());

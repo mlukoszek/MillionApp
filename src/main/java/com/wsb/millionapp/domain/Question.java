@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
+
 public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

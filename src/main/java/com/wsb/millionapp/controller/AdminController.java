@@ -1,6 +1,8 @@
 package com.wsb.millionapp.controller;
 
+import com.wsb.millionapp.repository.UsersRepository;
 import com.wsb.millionapp.service.AdminService;
+import com.wsb.millionapp.service.UsersService;
 import com.wsb.millionapp.to.QuestionDto;
 import com.wsb.millionapp.domain.Question;
 import org.springframework.http.ResponseEntity;
@@ -17,12 +19,16 @@ import java.util.Map;
 
 @Controller
 public class AdminController {
+    private final UsersRepository usersRepository;
+    private final UsersService usersService;
     private AdminService adminService;
     private QuestionDto questionDto;
 
-    public AdminController(AdminService adminService, QuestionDto questionDto) {
+    public AdminController(AdminService adminService, QuestionDto questionDto, UsersRepository usersRepository, UsersService usersService) {
         this.adminService = adminService;
         this.questionDto = questionDto;
+        this.usersRepository = usersRepository;
+        this.usersService = usersService;
     }
 
     @PostMapping("/addQuestion")
@@ -72,4 +78,11 @@ public class AdminController {
         String responseMessage = String.format("Usunięto pytanie id nr %d", questionId);
         return ResponseEntity.ok(responseMessage);
     }
+//    @PostMapping("/setActive")
+//    ResponseEntity<String> setUserAsActive(@RequestBody Long userId) {
+//        String userActivated = usersService.activateUser(userId);
+//
+//        return ResponseEntity.ok(userActivated);
+//    }
+
 }

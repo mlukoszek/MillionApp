@@ -1,6 +1,7 @@
 package com.wsb.millionapp.domain;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -8,6 +9,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "users")
 public class User {
 
@@ -22,18 +24,22 @@ public class User {
     private int age;
     @Column(name = "username")
     private String username;
-    @Column(name = "password")
+    @Column(name="password")
     private String password;
     @Column(name = "role")
     private String role;
+    @Column(name = "active", nullable = false)
+    private boolean active = false;
 
-    public User(String firstName, String lastName, int age, String username, String password, String role) {
+    public User(String firstName, String lastName, int age, String username, String password, String role, boolean active) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
         this.username = username;
         this.password = password;
         this.role = role;
+        this.active = active;
     }
+
 }
 
