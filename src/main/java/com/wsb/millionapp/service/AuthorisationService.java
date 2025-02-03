@@ -11,10 +11,10 @@ import java.util.Optional;
 @AllArgsConstructor
 @Service
 public class AuthorisationService {
-    private final AuthorisationRepository authenticationRepository;
+    private final AuthorisationRepository authorisationRepository;
 
     public String findPasswordByUsersId(Long userId){
-        String password = authenticationRepository.getPasswordByUsersId(userId);
+        String password = authorisationRepository.getPasswordByUsersId(userId);
         return password;
     }
 

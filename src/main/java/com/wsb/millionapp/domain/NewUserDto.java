@@ -1,21 +1,19 @@
-package com.wsb.millionapp.to;
+package com.wsb.millionapp.domain;
 
 import lombok.*;
-import org.springframework.stereotype.Component;
 
-
-@Component
 @Data
 @Getter
 @Setter
 @RequiredArgsConstructor
 @AllArgsConstructor
-public class UserDto{
+public class NewUserDto{
     private Long id;
     private String username;
     private String firstName;
     private String lastName;
     private int age;
+    private String password;
     private String role;
     private boolean active;
 }

@@ -1,11 +1,13 @@
 package com.wsb.millionapp.service;
 
 import com.wsb.millionapp.domain.Authorisation;
+import com.wsb.millionapp.domain.NewUserDto;
 import com.wsb.millionapp.domain.User;
 import com.wsb.millionapp.repository.AuthorisationRepository;
 import com.wsb.millionapp.to.UserDto;
 import com.wsb.millionapp.mapper.UsersDtoMapper;
 import com.wsb.millionapp.repository.UsersRepository;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -18,23 +20,24 @@ import java.util.Optional;
 public class UsersService {
 
     private final UsersRepository usersRepository;
-    private final AuthorisationRepository authenticationRepository;
+    private final AuthorisationRepository authorisationRepository;
 
-    public User saveNewUser(UserDto userDto) {
+    @Transactional
+    public User saveNewUser(NewUserDto newUserDto) {
         User user = new User();
-        user.setUsername(userDto.getUsername());
-        user.setFirstName(userDto.getFirstName());
-        user.setLastName(userDto.getLastName());
-        user.setAge(userDto.getAge());
+        user.setUsername(newUserDto.getUsername());
+        user.setFirstName(newUserDto.getFirstName());
+        user.setLastName(newUserDto.getLastName());
+        user.setAge(newUserDto.getAge());
         user.setRole("USER");
         User addedUser = usersRepository.save(user);
         Long userId = addedUser.getId();
-        String decodedPassword = new BCryptPasswordEncoder().encode(userDto.getPassword());
-        Authorisation authentication = new Authorisation();
-        authentication.setPassword(decodedPassword);
-        authentication.setUsersId(userId);
-        authentication.setCreatedAt(LocalDateTime.now());
-        authenticationRepository.save(authentication);
+        String decodedPassword = new BCryptPasswordEncoder().encode(newUserDto.getPassword());
+        Authorisation authorisation = new Authorisation();
+        authorisation.setPassword(decodedPassword);
+        authorisation.setUsersId(userId);
+        authorisation.setCreatedAt(LocalDateTime.now());
+        authorisationRepository.save(authorisation);
         return addedUser;
     }
 

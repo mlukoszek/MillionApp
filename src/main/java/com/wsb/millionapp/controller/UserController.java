@@ -1,5 +1,6 @@
 package com.wsb.millionapp.controller;
 
+import com.wsb.millionapp.domain.NewUserDto;
 import com.wsb.millionapp.domain.User;
 import com.wsb.millionapp.to.UserDto;
 import com.wsb.millionapp.service.UsersService;
@@ -16,8 +17,8 @@ class UserController {
 
     @PostMapping("/registerUser")
     @CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "*", allowCredentials = "true")
-    public ResponseEntity<String> registerUser(@RequestBody UserDto userDto) {
-        User addedUser = usersService.saveNewUser(userDto);
+    public ResponseEntity<String> registerUser(@RequestBody NewUserDto newUserDto) {
+        User addedUser = usersService.saveNewUser(newUserDto);
 
         String responseMessage = String.format("Zapisano użytkownika id nr %d o nazwie: %s",
                 addedUser.getId(),

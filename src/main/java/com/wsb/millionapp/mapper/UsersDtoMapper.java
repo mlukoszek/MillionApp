@@ -11,10 +11,9 @@ public class UsersDtoMapper {
         String lastName = user.getLastName();
         String username = user.getUsername();
         int age = user.getAge();
-        String password = user.getPassword();
         String role = user.getRole();
         boolean active = user.isActive();
-        return new UserDto(id, firstName, lastName,username, age, password, role, active);
+        return new UserDto(id, firstName, lastName,username, age, role, active);
     }
 }
 

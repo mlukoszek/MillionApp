@@ -11,12 +11,12 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Setter
 @Getter
-@Table(name = "authentication")
+@Table(name = "authorisation")
 public class Authorisation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long authentication_id;
+    private Long authorisationId;
     @Column(name = "password")
     private String password;
     @Column(name = "created_at")
