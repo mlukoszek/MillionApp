@@ -60,4 +60,20 @@ public class UsersService {
         }
         return "Aktywacja nieudana";
     }
+
+    public String deActivateUser(Long userId) {
+        User user = usersRepository.findUserById(userId);
+        if (user != null) {
+            user.setActive(false);
+            usersRepository.save(user);
+            return "User deactivated: " + user.getUsername();
+        }
+        return "Dezaktywacja nieudana";
+    }
+
+    public String deleteUser(Long id) {
+        //usunąć najpierw Authorisation
+        usersRepository.deleteById(String.valueOf(id));
+        return String.format("Użytkownik o id $s usunięty", id);
+    }
 }

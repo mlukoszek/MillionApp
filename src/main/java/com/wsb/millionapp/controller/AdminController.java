@@ -5,6 +5,7 @@ import com.wsb.millionapp.service.AdminService;
 import com.wsb.millionapp.service.UsersService;
 import com.wsb.millionapp.to.QuestionDto;
 import com.wsb.millionapp.domain.Question;
+import com.wsb.millionapp.to.UserDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/admin")
@@ -85,6 +87,27 @@ public class AdminController {
         Long userId = body.get("userId");
         String userActivated = usersService.activateUser(userId);
         return ResponseEntity.ok(userActivated);
+    }
+
+    @PutMapping("/deactivateUser")
+    ResponseEntity<String> setUserAsNotActive(@RequestBody Map<String, Long> body) {
+        Long userId = body.get("userId");
+        String userDeActivated = usersService.deActivateUser(userId);
+        return ResponseEntity.ok(userDeActivated);
+    }
+
+    @DeleteMapping("/deleteUser")
+    ResponseEntity<String> deleteUserById(@RequestBody Map<String, Long> body) {
+        Long userId = body.get("userId"); // Pobierz questionId z ciała zapytania
+        usersService.deleteUser(userId);
+        String responseMessage = String.format("Usunięto użytkownika id nr %d", userId);
+        return ResponseEntity.ok(responseMessage);
+    }
+    @GetMapping("/searchUser")
+    @ResponseBody
+    public UserDto getUserByUsername(@RequestParam String username) {
+        Optional<UserDto> userDto = usersService.findUserByUsername(username);
+        return userDto.orElseGet(UserDto::new);
     }
 
 }
