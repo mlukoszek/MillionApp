@@ -4,8 +4,8 @@ import com.wsb.millionapp.to.QuestionDto;
 import com.wsb.millionapp.service.QuestionsService;
 import com.wsb.millionapp.to.UserDto;
 import com.wsb.millionapp.service.UsersService;
-import com.wsb.millionapp.domain.Score;
-import com.wsb.millionapp.service.ScoreService;
+import com.wsb.millionapp.domain.Result;
+import com.wsb.millionapp.service.ResultService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +27,7 @@ import java.util.Optional;
 class QuestionsController {
     private QuestionsService questionsService;
     private UsersService usersService;
-    private ScoreService scoreService;
+    private ResultService scoreService;
 
     @PostMapping("/drawQuestion")
     @CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "*", allowCredentials = "true")
@@ -52,7 +52,7 @@ class QuestionsController {
             responseMessage = "Odpowiedź jest poprawna";
             if (answerRequest.getDifficulty()==12) {
                 saveGameResult(12);
-                return ResponseEntity.status(HttpStatus.OK).body(new EvaluationResponse(responseMessage, 12));
+                return ResponseEntity.status(HttpStatus.OK).body(new EvaluationResponse(responseMessage + ". Gratulacje wygrałeś milion złotych", 12));
             }
         } else {
             responseMessage = "Odpowiedź jest błędna";
@@ -61,7 +61,7 @@ class QuestionsController {
             return ResponseEntity.status(HttpStatus.OK).body(new EvaluationResponse(responseMessage, yourPrize));
         }
 
-        return ResponseEntity.ok(new EvaluationResponse(responseMessage, null));
+        return ResponseEntity.ok(new EvaluationResponse(responseMessage, answerRequest.getDifficulty()-1));
     }
 
     @RequestMapping("/getStats")
@@ -75,7 +75,7 @@ class QuestionsController {
         Optional<UserDto> optUserDto = usersService.findUserByUsername(name);
         if (optUserDto.isPresent()) {
             UserDto userDto = optUserDto.get();
-            Score score = new Score(LocalDate.now(), difficulty, userDto.getId());
+            Result score = new Result(LocalDate.now(), difficulty, userDto.getId());
             scoreService.saveResult(score);
         }
     }

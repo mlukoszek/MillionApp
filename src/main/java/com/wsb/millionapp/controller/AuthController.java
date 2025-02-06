@@ -64,7 +64,7 @@ public class AuthController {
             System.out.println("id sesji:" + session.getAttributeNames());
 
             System.out.println("Session ID: " + session.getId());
-            System.out.println("Logged-in user: " + SecurityContextHolder.getContext().getAuthentication().getName());
+            System.out.println("Logged-in user: " + SecurityContextHolder.getContext().getAuthentication().getPrincipal());
             System.out.println("User authorities: " + SecurityContextHolder.getContext().getAuthentication().getAuthorities());
 
             return ResponseEntity.status(HttpStatus.ACCEPTED).body(responseBody);

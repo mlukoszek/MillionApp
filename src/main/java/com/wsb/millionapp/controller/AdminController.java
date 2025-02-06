@@ -7,10 +7,7 @@ import com.wsb.millionapp.to.QuestionDto;
 import com.wsb.millionapp.domain.Question;
 import com.wsb.millionapp.to.UserDto;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.context.SecurityContext;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -98,7 +95,7 @@ public class AdminController {
 
     @DeleteMapping("/deleteUser")
     ResponseEntity<String> deleteUserById(@RequestBody Map<String, Long> body) {
-        Long userId = body.get("userId"); // Pobierz questionId z ciała zapytania
+        Long userId = body.get("userId");
         usersService.deleteUser(userId);
         String responseMessage = String.format("Usunięto użytkownika id nr %d", userId);
         return ResponseEntity.ok(responseMessage);

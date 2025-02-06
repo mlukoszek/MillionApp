@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @SpringBootApplication
-@EntityScan({"com.wsb.millionapp.domain"})
+@EntityScan({"com.wsb.millionapp"})
 public class MillionAppApplication {
 
     public static void main(String[] args) {

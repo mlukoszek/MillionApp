@@ -12,9 +12,9 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 public class UserDto{
     private Long id;
-    private String username;
     private String firstName;
     private String lastName;
+    private String username;
     private int age;
     private String role;
     private boolean active;

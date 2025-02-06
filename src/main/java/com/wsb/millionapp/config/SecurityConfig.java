@@ -55,7 +55,7 @@ public class SecurityConfig {
                         authorizeRequests
                                 .requestMatchers("/api/login", "api/registerUser","/api/audienceVote", "/api/fiftyFifty", "/img/**",
                                         "/styles/*", "/admin/addQuestion", "/admin/getAllQuestions", "/admin/deactivateUser", "/admin/activateUser",
-                                        "/deleteQuestion", "/api/friendCall", "/admin/deleteUser").permitAll()
+                                        "/deleteQuestion", "/api/friendCall", "/admin/deleteUser", "/api/getTopScores").permitAll()
                                 //.requestMatchers("/admin").hasRole("ADMIN")
                                 .anyRequest().authenticated()
                 );

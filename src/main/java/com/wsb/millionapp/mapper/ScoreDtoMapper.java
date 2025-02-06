@@ -1,12 +1,12 @@
 package com.wsb.millionapp.mapper;
 
-import com.wsb.millionapp.domain.Score;
+import com.wsb.millionapp.domain.Result;
 import com.wsb.millionapp.to.ScoreDto;
 
 import java.time.LocalDate;
 
 public class ScoreDtoMapper {
-    static ScoreDto map(Score score) {
+    static ScoreDto map(Result score) {
         Long id = score.getId();
         LocalDate date = score.getDate();
         int result = score.getResult();
