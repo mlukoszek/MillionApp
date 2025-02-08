@@ -9,6 +9,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
+import static com.wsb.millionapp.controller.QuestionsController.getLoggedUserName;
+
 @Controller
 @AllArgsConstructor
 @RequestMapping("/api")
@@ -24,5 +28,13 @@ class UserController {
                 addedUser.getId(),
                 addedUser.getUsername());
         return ResponseEntity.ok(responseMessage);
+    }
+
+    @GetMapping("/getMyDetails")
+    @ResponseBody
+    public UserDto getUserByUsername() {
+        String username = getLoggedUserName();
+        Optional<UserDto> userDto = usersService.findUserByUsername(username);
+        return userDto.orElseGet(UserDto::new);
     }
 }

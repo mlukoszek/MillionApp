@@ -75,12 +75,14 @@ class QuestionsController {
         Optional<UserDto> optUserDto = usersService.findUserByUsername(name);
         if (optUserDto.isPresent()) {
             UserDto userDto = optUserDto.get();
-            Result score = new Result(LocalDate.now(), difficulty, userDto.getId());
+            Long id = userDto.getId();
+            LocalDate localDate = LocalDate.now();
+            Result score = new Result(localDate, difficulty, id);
             scoreService.saveResult(score);
         }
     }
 
-    String getLoggedUserName() {
+    public static String getLoggedUserName() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         return auth.getName();
     }

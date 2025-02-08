@@ -28,4 +28,9 @@ public class ResultService {
         List<Object[]> results = scoreRepository.findAllResultsOrderedNative();
         return resultDtoMapper.mapToDtoList(results);
     }
+
+    public List<UserResultDto> getResultsOrderedByUsername(String username) {
+        List<Object[]> results = scoreRepository.findMyResultsOrderedNative(username);
+        return resultDtoMapper.mapToDtoList(results);
+    }
 }
