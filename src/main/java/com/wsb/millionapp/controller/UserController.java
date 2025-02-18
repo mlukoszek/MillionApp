@@ -37,4 +37,6 @@ class UserController {
         Optional<UserDto> userDto = usersService.findUserByUsername(username);
         return userDto.orElseGet(UserDto::new);
     }
+
+    //@GetMapping("/")
 }

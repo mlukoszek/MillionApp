@@ -34,8 +34,6 @@ class QuestionsController {
     public ResponseEntity<QuestionDto> getQuestion(@RequestParam int difficulty) {
         int adjustedDifficulty = difficulty + 1;
         QuestionDto questionDto = questionsService.drawQuestion(adjustedDifficulty);
-        String string = SecurityContextHolder.getContext().getAuthentication().getName();
-        System.out.println("aktualny kontekst: " + string);
         return ResponseEntity.ok(questionDto);
     }
 

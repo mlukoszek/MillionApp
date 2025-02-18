@@ -9,17 +9,23 @@ import java.net.URL;
 import com.wsb.millionapp.to.QuestionDto;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 
 @Service
 public class BielikIntegration {
+    @Value("${endpoint.api.bielik.url}")
+    private String apiUrl;
+
+    @Value("${endpoint.api.bielik.token}")
+    private String friendliToken;
+
+    @Value("${endpoint.api.bielik.id}")
+    private String endpointId;
 
     public String createRequest(QuestionDto questionDto) throws IOException {
-        String apiUrl = "https://api.friendli.ai/dedicated/v1/completions";
-        String friendliToken = "flp_gDy5YaSKCJHCYjIl3sVc09NLIGuWx9Yi6pZBYawFRK7845";
-        String endpointId = "wyv5j10qu4i4";
 
         String question = String.format("Oto symulacja telefonu do przyjaciela z teleturnieju Milionerzy. " +
                 "Proszę abyś pomógł graczowi odpowiedzieć na pytanie. Wybierz jedną z podanych możliwych odpowiedzi " +
@@ -28,6 +34,7 @@ public class BielikIntegration {
                 questionDto.getAnswerD();
 
         URL url = new URL(apiUrl);
+        System.out.println(url);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
         connection.setRequestMethod("POST");
